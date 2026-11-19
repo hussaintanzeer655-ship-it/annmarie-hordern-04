@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang=\"en\">
+<head>
+  <meta charset=\"utf-8\"/>
+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>
+  <title>Contact Hub - Annmarie</title>
+  <style>
+    :root{--bg:#0e111b;--card:#141a2f;--fg:#e9f0ff;--ok:#4cd97a}
+    *{box-sizing:border-box}html,body{margin:0;height:100%}body{font-family:Arial, sans-serif;background:var(--bg);color:var(--fg)}
+    header{padding:1rem 1rem;border-bottom:1px solid #2b3a6b;background:rgba(7,9,20,.9)}
+    .wrap{max-width:520px;margin:2rem auto;padding:1rem}
+    form{display:flex;flex-direction:column;gap:.6rem;background:var(--card);border:1px solid #2a315f;padding:1rem;border-radius:.5rem}
+    input,.textarea{padding:.6rem;border-radius:.25rem;border:1px solid #39407a;background:#0b1226;color:#fff}
+    button{padding:.6rem 1rem;border-radius:.25rem;border:0;background:#7bd389;color:#002617;cursor:pointer}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Annmarie Hordern</h1>
+  </header>
+  <section class="wrap" aria-label="contact section">
+    <form onsubmit="return submitForm(event)" aria-label="contact form">
+      <input id="name" placeholder="Your name" required>
+      <input id="email" placeholder="Your email" type="email" required>
+      <textarea id="message" placeholder="Your message" rows="4" required style="resize:vertical" class="textarea"></textarea>
+      <button type="submit">Send</button>
+      <span id="status" style="min-height:1.2em"></span>
+    </form>
+  </section>
+  <script>
+    function submitForm(e){e.preventDefault();
+      const n=document.getElementById('name').value,em=document.getElementById('email').value,m=document.getElementById('message').value;
+      if(!n||!em||!m){document.getElementById('status').textContent='Please complete all fields.';return false;}
+      document.getElementById('status').textContent='Thanks '+n+'! Your message was captured.';e.target.reset();return false;}
+  </script>
+</body>
+</html>
